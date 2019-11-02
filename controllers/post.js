@@ -1,13 +1,11 @@
 const Post = require('./../models/Post');
 
-const catchAsync = require('./../utils/catchAsync');
+const factory = require('./factoryHandler');
 
-exports.createPost = catchAsync(async (req, res, next) => {
-  const post = await Post.create(req.body);
-  res.status(201).json({
-    status: 'success',
-    data: {
-      post
-    }
-  });
-});
+exports.createPost = factory.createOne(Post);
+
+exports.getPost = factory.getOne(Post);
+
+exports.updatePost = factory.updateOne(Post);
+
+exports.deletePost = factory.deleteOne(Post);
