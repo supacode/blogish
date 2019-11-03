@@ -1,3 +1,4 @@
+const dotenv = require('dotenv');
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
@@ -5,6 +6,10 @@ const helmet = require('helmet');
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 const commentRoutes = require('./routes/comment');
+
+dotenv.config({
+  path: './config.env'
+});
 
 const app = express();
 
