@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 
+const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 const commentRoutes = require('./routes/comment');
 
@@ -16,6 +17,7 @@ app.use(helmet());
 app.use(morgan('dev'));
 
 // Mount app routes
+app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/post', postRoutes);
 app.use('/api/v1/comment', commentRoutes);
 

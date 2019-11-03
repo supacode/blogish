@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const postSchema = new mongoose.Schema(
   {
@@ -10,6 +11,9 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Post must have body']
     },
+    slug: {
+      type: String
+    },
     datePosted: {
       type: Date,
       default: Date.now
@@ -20,6 +24,12 @@ const postSchema = new mongoose.Schema(
     toObject: { virtuals: true }
   }
 );
+
+// Create slug
+postSchema.pre('save', function(next) {
+  this.slug = slugify(this.title, { lower: true });
+  next();
+});
 
 // Virtual populate comments
 postSchema.virtual('comments', {
