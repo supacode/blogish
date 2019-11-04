@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('./../models/User');
 const catchAsync = require('./../utils/catchAsync');
+const AppError = require('./../utils/appError');
 
 const signToken = id => {
   return jwt.sign({ id }, process.env.JWT_SECRET_KEY, {
@@ -20,10 +21,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
 
   if (!token) {
-    return res.status(401).json({
-      status: 'fail',
-      message: 'Provide a valid token'
-    });
+    return next(new AppError('Not authorized to do that.', 401));
   }
 
   try {
@@ -73,6 +71,32 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   const token = signToken(user._id);
+
+  res.status(200).json({
+    status: 'success',
+    token,
+    user
+  });
+});
+
+// Update Password for logged in user
+exports.updatePassword = catchAsync(async (req, res, next) => {
+  const { password, newPassword, confirmPassword } = req.body;
+
+  const user = await User.findById(req.user).select('+password');
+
+  if (!(await req.user.comparePassword(password, user.password))) {
+    return next(new AppError('Incorrect password', 401));
+  }
+
+  user.password = newPassword;
+  user.confirmPassword = confirmPassword;
+
+  await user.save();
+
+  const token = signToken(user._id);
+
+  user.password = undefined;
 
   res.status(200).json({
     status: 'success',

@@ -3,7 +3,8 @@ const AppError = require('./../utils/appError');
 const errorHandler = (err, req, res, next) => {
   let error = { ...err };
 
-  console.log(error);
+  error.message = err.message;
+  console.log(err);
 
   // Validation Error
   if (err.name === 'ValidationError') {
