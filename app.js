@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const hpp = require('hpp');
 const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
 
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
@@ -25,8 +26,10 @@ app.use(hpp());
 // Helmet
 app.use(helmet());
 
-// Log dev requests
-if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development') {
+  // Log dev requests
+  app.use(morgan('dev'));
+}
 
 // Rate Limiter
 const limiter = rateLimit({
@@ -38,6 +41,9 @@ app.use(limiter);
 
 // Sanitize mongo data
 app.use(mongoSanitize());
+
+// XSS Attacls
+app.use(xss());
 
 // Mount app routes
 app.use('/api/v1/users', userRoutes);
