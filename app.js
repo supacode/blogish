@@ -3,11 +3,12 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const hpp = require('hpp');
+const rateLimit = require('express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize');
 
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 const commentRoutes = require('./routes/comment');
-
 const errorHandler = require('./controllers/error');
 
 dotenv.config({
@@ -25,7 +26,18 @@ app.use(hpp());
 app.use(helmet());
 
 // Log dev requests
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
+
+// Rate Limiter
+const limiter = rateLimit({
+  windowMs: 30 * 60 * 1000,
+  max: 100
+});
+
+app.use(limiter);
+
+// Sanitize mongo data
+app.use(mongoSanitize());
 
 // Mount app routes
 app.use('/api/v1/users', userRoutes);
