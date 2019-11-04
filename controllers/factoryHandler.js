@@ -1,4 +1,5 @@
 const catchAsync = require('./../utils/catchAsync');
+const AppError = require('./../utils/appError');
 
 exports.createOne = Model =>
   catchAsync(async (req, res, next) => {
@@ -18,6 +19,13 @@ exports.getOne = (Model, populateOptions) =>
     if (populateOptions) query.populate(populateOptions);
 
     const doc = await query;
+
+    if (!doc) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Resource not found'
+      });
+    }
 
     res.status(200).json({
       status: 'success',

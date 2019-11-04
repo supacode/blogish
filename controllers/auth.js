@@ -9,9 +9,38 @@ const signToken = id => {
   });
 };
 
-exports.protect = (req, res, next) => {
-  next();
-};
+exports.protect = catchAsync(async (req, res, next) => {
+  let token;
+
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+
+  if (!token) {
+    return res.status(401).json({
+      status: 'fail',
+      message: 'Provide a valid token'
+    });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+    const user = await User.findById(decoded.id);
+
+    req.user = user;
+
+    next();
+  } catch (err) {
+    return res.status(403).json({
+      status: 'fail',
+      message: err
+    });
+  }
+});
 
 exports.signUp = catchAsync(async (req, res, next) => {
   const { name, email, password, confirmPassword } = req.body;
