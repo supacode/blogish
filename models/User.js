@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
@@ -37,6 +39,24 @@ userSchema.methods.comparePassword = async function(
   userPassword
 ) {
   return bcrypt.compare(enteredPassword, userPassword);
+};
+
+userSchema.methods.generateResetToken = function() {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+
+  const resetTokenHashed = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+
+  this.resetToken = resetTokenHashed;
+
+  const resetTokenExpiry =
+    Date.now() + +process.env.PASSWORD_TOKEN_EXPIRY * 60 * 1000;
+
+  this.resetTokenExpiry = resetTokenExpiry;
+
+  return resetToken;
 };
 
 userSchema.pre('save', async function(next) {

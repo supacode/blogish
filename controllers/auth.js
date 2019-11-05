@@ -3,10 +3,25 @@ const jwt = require('jsonwebtoken');
 const User = require('./../models/User');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
+const sendEmail = require('./../utils/email');
 
 const signToken = id => {
   return jwt.sign({ id }, process.env.JWT_SECRET_KEY, {
     expiresIn: process.env.JWT_EXPIRES_IN
+  });
+};
+
+const createSendToken = (user, status, res) => {
+  const token = signToken(user._id);
+
+  user.password = undefined;
+
+  res.status(status).json({
+    status: 'success',
+    data: {
+      user,
+      token
+    }
   });
 };
 
@@ -45,17 +60,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
   const user = await User.create({ name, email, password, confirmPassword });
 
-  const token = signToken(user._id);
-
-  console.log(token);
-
-  res.status(201).json({
-    status: 'success',
-    data: {
-      user,
-      token
-    }
-  });
+  createSendToken(user, 201, res);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -70,12 +75,23 @@ exports.login = catchAsync(async (req, res, next) => {
     });
   }
 
-  const token = signToken(user._id);
+  createSendToken(user, 200, res);
+});
+
+exports.forgotPassword = catchAsync(async (req, res, next) => {
+  const user = await User.findOne({ email: req.body.email });
+
+  if (!user) {
+    return next(new AppError('No user found with that email', 404));
+  }
+
+  const resetToken = await user.generateResetToken();
+
+  await user.save({ validateBeforeSave: false });
 
   res.status(200).json({
     status: 'success',
-    token,
-    user
+    message: 'Reset token sent to your E-mail'
   });
 });
 
@@ -94,13 +110,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
   await user.save();
 
-  const token = signToken(user._id);
-
-  user.password = undefined;
-
-  res.status(200).json({
-    status: 'success',
-    token,
-    user
-  });
+  createSendToken(user, 200, res);
 });
