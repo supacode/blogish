@@ -44,6 +44,14 @@ userSchema.methods.comparePassword = async function(
   return bcrypt.compare(enteredPassword, userPassword);
 };
 
+userSchema.pre('save', function(next) {
+  if (this.isNew || !this.isModified('password')) next();
+
+  this.passwordChangedAt = Date.now();
+
+  next();
+});
+
 userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) next();
 
@@ -53,6 +61,19 @@ userSchema.pre('save', async function(next) {
 
   next();
 });
+
+userSchema.methods.passwordChangedAfter = function(JWTtimestamp) {
+  if (this.passwordChangedAt) {
+    const passwordChangeTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    ); //Convert passwordChangedAt date => timestamp
+
+    return JWTtimestamp < passwordChangeTimestamp;
+  }
+
+  return false;
+};
 
 userSchema.methods.generateResetToken = function() {
   const resetToken = crypto.randomBytes(32).toString('hex');
