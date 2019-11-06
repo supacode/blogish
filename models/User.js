@@ -31,7 +31,10 @@ const userSchema = new mongoose.Schema({
       },
       message: 'Passwords do not match'
     }
-  }
+  },
+  passwordTokenExpiry: Date,
+  passwordResetToken: String,
+  passwordChangedAt: Date
 });
 
 userSchema.methods.comparePassword = async function(
@@ -39,24 +42,6 @@ userSchema.methods.comparePassword = async function(
   userPassword
 ) {
   return bcrypt.compare(enteredPassword, userPassword);
-};
-
-userSchema.methods.generateResetToken = function() {
-  const resetToken = crypto.randomBytes(32).toString('hex');
-
-  const resetTokenHashed = crypto
-    .createHash('sha256')
-    .update(resetToken)
-    .digest('hex');
-
-  this.resetToken = resetTokenHashed;
-
-  const resetTokenExpiry =
-    Date.now() + +process.env.PASSWORD_TOKEN_EXPIRY * 60 * 1000;
-
-  this.resetTokenExpiry = resetTokenExpiry;
-
-  return resetToken;
 };
 
 userSchema.pre('save', async function(next) {
@@ -68,5 +53,19 @@ userSchema.pre('save', async function(next) {
 
   next();
 });
+
+userSchema.methods.generateResetToken = function() {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+
+  const hashedResetToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+
+  this.passwordResetToken = hashedResetToken;
+  this.passwordTokenExpiry = Date.now() + 15 * 60 * 1000;
+
+  return resetToken;
+};
 
 module.exports = mongoose.model('User', userSchema);

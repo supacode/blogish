@@ -79,19 +79,36 @@ exports.login = catchAsync(async (req, res, next) => {
 });
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
-  const user = await User.findOne({ email: req.body.email });
+  const { email } = req.body;
+  const user = await User.findOne({ email });
 
   if (!user) {
-    return next(new AppError('No user found with that email', 404));
+    return next(new AppError('No user found with that E-mail', 404));
   }
 
-  const resetToken = await user.generateResetToken();
+  const resetToken = user.generateResetToken();
 
   await user.save({ validateBeforeSave: false });
 
+  const resetUrl = `${req.protocol}://${req.get(
+    'host'
+  )}/api/v1/reset-password/${resetToken}`;
+
+  const subject = 'E-mail Reset Token';
+
+  const message = `Hello there, somebody (hopefully you) requested for a password change. Make a patch request to ${resetUrl} to change your password `;
+
+  try {
+    await sendEmail({ to: email, subject, message });
+  } catch (err) {
+    this.passwordResetToken = undefined;
+    this.passwordTokenExpiry = undefined;
+    return next(new AppError('E-mail could not be sent', 500));
+  }
+
   res.status(200).json({
     status: 'success',
-    message: 'Reset token sent to your E-mail'
+    message: 'An E-mail containing the reset token has been sent to your E-mail'
   });
 });
 
