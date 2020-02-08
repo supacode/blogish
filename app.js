@@ -58,7 +58,7 @@ app.all('*', (req, res, next) => {
   });
 });
 
-//Global Error Handler
+// Global Error Handler
 app.use(errorHandler);
 
 module.exports = app;
