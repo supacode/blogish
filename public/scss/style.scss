@@ -1,1 +1,44 @@
-@import "_reset"
+@import '_variables';
+@import '_reset';
+
+body {
+  font-family: $font-stack;
+  background: #f1f1f1;
+}
+
+.page-wrapper {
+  max-width: $page-width;
+  margin: auto;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  border-bottom: 1px solid #ccc;
+  align-items: center;
+
+  &__logo {
+    color: #444;
+    font: {
+      size: 150%;
+      weight: 800;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: inherit;
+    }
+  }
+
+  &__nav {
+    li {
+      display: inline-block;
+      margin-left: 2rem;
+    }
+    li a {
+      text-decoration: none;
+    }
+  }
+}
