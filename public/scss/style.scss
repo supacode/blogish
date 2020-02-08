@@ -3,7 +3,7 @@
 
 body {
   font-family: $font-stack;
-  background: #f1f1f1;
+  background: #f8f8f8;
 }
 
 .page-wrapper {
@@ -39,6 +39,42 @@ body {
     }
     li a {
       text-decoration: none;
+      border-bottom: 2px solid transparent;
+      &:hover {
+        border-bottom-color: $accent;
+      }
+    }
+  }
+}
+
+// Post
+
+.post {
+  display: flex;
+  margin: 2rem 0;
+  border-bottom: 1px solid #bdbdbd;
+  &__img {
+    width: 300px;
+    height: 200px;
+    flex: 0.5;
+    margin-right: 2rem;
+
+    background: {
+      color: #333333;
+      image: url('../img/posts/post-test.jpg');
+      size: cover;
+    }
+  }
+
+  &__overview {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 200%;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
   }
 }

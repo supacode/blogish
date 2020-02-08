@@ -1,1 +1,21 @@
-<%- include('includes/header.ejs') %> <%- include('includes/footer.ejs') %>
+<%- include('includes/header.ejs');%> <% posts.forEach(post => { %>
+
+<article class="post">
+  <div class="post__img" data-image="<%= post.coverImage %>"></div>
+
+  <div class="post__overview">
+    <h2 class="post__title">
+      <a href="post/<%= post.slug %>"><%=post.title %></a>
+    </h2>
+    <p class="post__time">
+      <time
+        ><%= post.datePosted.toLocaleString('en-us', {weekday: 'long', month:
+        'long', year: 'numeric', day: 'numeric'}) %></time
+      >
+    </p>
+
+    <p class="post__body"><%= post.body %></p>
+  </div>
+</article>
+
+<%}) %> <%-include('includes/footer.ejs') %>
