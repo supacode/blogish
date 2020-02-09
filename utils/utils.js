@@ -1,5 +1,5 @@
 exports.generateRandomStr = strLength => {
-  let chars = 'abcdef-ghijklm-nopqrs-tuvwxyz-123456-7890';
+  let chars = 'abcdef_ghijklm_nopqrs_tuvwxyz_123456_7890';
   chars += chars;
 
   let result = '';
@@ -7,5 +7,5 @@ exports.generateRandomStr = strLength => {
   for (let i = 0; i < strLength; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  return result.toLocaleLowerCase();
+  return result;
 };
