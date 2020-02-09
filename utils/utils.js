@@ -1,5 +1,5 @@
 exports.generateRandomStr = strLength => {
-  let chars = 'abcdef_ghijklm_nopqrs_tuvwxyz_123456_7890';
+  let chars = '_abcdefghijklmnopqrstuvwxyz1234567890_';
   chars += chars;
 
   let result = '';

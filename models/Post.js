@@ -20,6 +20,10 @@ const postSchema = new mongoose.Schema(
     datePosted: {
       type: Date,
       default: Date.now
+    },
+    coverImage: {
+      type: String,
+      default: 'post-test.jpg'
     }
   },
   {
