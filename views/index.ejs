@@ -1,21 +1,33 @@
-<%- include('includes/header.ejs');%> <% posts.forEach(post => { %>
+<%- include('includes/header.ejs');%>
+<div class="post-wrap">
+  <% posts.forEach(post => { %>
 
-<article class="post">
-  <div class="post__img" data-image="<%= post.coverImage %>"></div>
+  <article class="post">
+    <div class="post__img" data-image="<%= post.coverImage %>"></div>
 
-  <div class="post__overview">
-    <h2 class="post__title">
-      <a href="post/<%= post.slug %>"><%=post.title %></a>
-    </h2>
-    <p class="post__time">
-      <time
-        ><%= post.datePosted.toLocaleString('en-us', {weekday: 'long', month:
-        'long', year: 'numeric', day: 'numeric'}) %></time
-      >
-    </p>
+    <div class="post__overview">
+      <header class="post__header">
+        <h2 class="post__title">
+          <a href="post/<%= post.slug %>"><%=post.title %></a>
+        </h2>
+        <p class="post__time">
+          <time
+            ><%= post.datePosted.toLocaleString('en-us', {weekday: 'long',
+            month: 'long', year: 'numeric', day: 'numeric'}) %></time
+          >
+        </p>
+      </header>
+      <div class="post__body">
+        <p>
+          <%= post.body.substr(0,200) %>
+        </p>
+        <p>
+          <a class="post__read-more" href="post/<%= post.slug %>">Read more</a>
+        </p>
+      </div>
+    </div>
+  </article>
 
-    <p class="post__body"><%= post.body %></p>
-  </div>
-</article>
-
-<%}) %> <%-include('includes/footer.ejs') %>
+  <%}) %>
+</div>
+<%-include('includes/footer.ejs') %>

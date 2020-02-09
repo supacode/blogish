@@ -49,21 +49,28 @@ body {
 
 // Post
 
+.post-wrap {
+  width: 80%;
+}
 .post {
   display: flex;
-  margin: 2rem 0;
-  border-bottom: 1px solid #bdbdbd;
-  &__img {
-    width: 300px;
-    height: 200px;
-    flex: 0.5;
-    margin-right: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px dashed #ccc;
 
+  &__img {
+    margin-right: 2rem;
+    object-fit: contain;
+    width: 330px;
+    max-height: 200px;
+    overflow: hidden;
     background: {
-      color: #333333;
       image: url('../img/posts/post-test.jpg');
       size: cover;
     }
+  }
+
+  &__header {
+    margin-bottom: 1rem;
   }
 
   &__overview {
@@ -71,10 +78,32 @@ body {
   }
 
   &__title {
-    font-size: 200%;
+    font: {
+      weight: 600;
+      size: 180%;
+    }
     a {
       text-decoration: none;
       color: inherit;
+      transition: 0.4s ease-out color;
+      &:hover {
+        color: $accent;
+      }
     }
+  }
+
+  &__time {
+    font: {
+      style: italic;
+    }
+  }
+
+  &__read-more {
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 5px 7px;
+    background: $accent;
+    text-decoration: none;
+    color: #fff;
   }
 }
