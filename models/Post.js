@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 
+const { generateRandomStr } = require('./../utils/utils');
+
 const postSchema = new mongoose.Schema(
   {
     title: {
@@ -12,7 +14,8 @@ const postSchema = new mongoose.Schema(
       required: [true, 'Post must have body']
     },
     slug: {
-      type: String
+      type: String,
+      unique: true
     },
     datePosted: {
       type: Date,
@@ -21,13 +24,21 @@ const postSchema = new mongoose.Schema(
   },
   {
     toJSON: { virtuals: true },
-    toObject: { virtuals: true }
+    toObject: { virtuals: true },
+    timestamps: true
   }
 );
 
+postSchema.index({ slug: 1 });
+
 // Create slug
 postSchema.pre('save', function(next) {
-  this.slug = slugify(this.title, { lower: true });
+  const slug = slugify(this.title, { lower: true }).concat(
+    `-${generateRandomStr(5)}`
+  );
+
+  this.slug = slug;
+
   next();
 });
 
