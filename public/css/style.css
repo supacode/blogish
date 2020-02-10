@@ -122,4 +122,28 @@ body {
   text-decoration: none;
   color: #fff;
 }
+
+.post-item {
+  width: 70%;
+  padding: 2rem 0;
+}
+
+.post-item__header {
+  margin-bottom: 1rem;
+}
+
+.post-item__title {
+  font-size: 2rem;
+}
+
+.post-item__body {
+  padding: 2rem 0;
+}
+
+.post-item__body::first-letter {
+  font-size: 300%;
+  float: left;
+  padding-right: 10px;
+  line-height: 0.85;
+}
 /*# sourceMappingURL=style.css.map */

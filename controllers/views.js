@@ -15,5 +15,8 @@ exports.getPost = catchAsync(async (req, res, next) => {
 
   const post = await Post.findOne({ slug });
 
-  res.render('post', { title: post.title, post });
+  res.status(200).render('post', {
+    title: post.title,
+    post
+  });
 });

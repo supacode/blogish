@@ -1,8 +1,15 @@
 <%- include('includes/header.ejs') %>
 
-<article>
+<article class="post-item">
+  <header class="post-item__header">
+    <h1 class="post-item__title"><%= post.title %></h1>
+    <time
+      ><%= post.datePosted.toLocaleString('en-us', {weekday: 'long', month:
+      'long', year: 'numeric', day: 'numeric'}) %></time
+    >
+  </header>
   <img src="/img/posts/post-test.jpg" alt="<%= post.title %>" />
-  <p><%= post.body %></p>
+  <p class="post-item__body"><%= post.body %></p>
 </article>
 
 <%- include('includes/footer.ejs') %>

@@ -107,3 +107,25 @@ body {
     color: #fff;
   }
 }
+
+.post-item {
+  width: 70%;
+  padding: 2rem 0;
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+  &__title {
+    font-size: 2rem;
+  }
+
+  &__body {
+    padding: 2rem 0;
+    &::first-letter {
+      font-size: 300%;
+      float: left;
+      padding-right: 10px;
+      line-height: 0.85;
+    }
+  }
+}
