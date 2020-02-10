@@ -55,22 +55,27 @@ body {
 .main-header__nav li a {
   text-decoration: none;
   border-bottom: 2px solid transparent;
+  color: inherit;
 }
 
 .main-header__nav li a:hover {
   border-bottom-color: #0ca175;
 }
 
-.post-wrap {
-  width: 80%;
+.page-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2rem 0;
 }
 
 .post {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 2rem 0;
   border-bottom: 1px dashed #ccc;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 
 .post__img {
@@ -96,7 +101,7 @@ body {
 
 .post__title {
   font-weight: 600;
-  font-size: 180%;
+  font-size: 160%;
 }
 
 .post__title a {
@@ -124,8 +129,7 @@ body {
 }
 
 .post-item {
-  width: 70%;
-  padding: 2rem 0;
+  width: 100%;
 }
 
 .post-item__header {
@@ -138,10 +142,12 @@ body {
 
 .post-item__body {
   padding: 2rem 0;
+  line-height: 1.5;
 }
 
 .post-item__body::first-letter {
   font-size: 300%;
+  font-weight: 600;
   float: left;
   padding-right: 10px;
   line-height: 0.85;

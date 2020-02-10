@@ -1,7 +1,6 @@
 <%- include('includes/header.ejs');%>
 <div class="post-wrap">
   <% posts.forEach(post => { %>
-
   <article class="post">
     <div class="post__img" data-image="<%= post.coverImage %>"></div>
 
@@ -30,4 +29,5 @@
 
   <%}) %>
 </div>
-<%-include('includes/footer.ejs') %>
+
+<%- include('includes/end.ejs') %>

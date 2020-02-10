@@ -40,6 +40,7 @@ body {
     li a {
       text-decoration: none;
       border-bottom: 2px solid transparent;
+      color: inherit;
       &:hover {
         border-bottom-color: $accent;
       }
@@ -47,15 +48,18 @@ body {
   }
 }
 
-// Post
-
-.post-wrap {
-  width: 80%;
-}
-.post {
+.page-body {
   display: flex;
   padding: 2rem 0;
+}
+
+// Post
+
+.post {
+  display: flex;
   border-bottom: 1px dashed #ccc;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
 
   &__img {
     margin-right: 2rem;
@@ -80,7 +84,7 @@ body {
   &__title {
     font: {
       weight: 600;
-      size: 180%;
+      size: 160%;
     }
     a {
       text-decoration: none;
@@ -109,8 +113,7 @@ body {
 }
 
 .post-item {
-  width: 70%;
-  padding: 2rem 0;
+  width: 100%;
 
   &__header {
     margin-bottom: 1rem;
@@ -121,8 +124,12 @@ body {
 
   &__body {
     padding: 2rem 0;
+    line-height: 1.5;
     &::first-letter {
-      font-size: 300%;
+      font: {
+        size: 300%;
+        weight: 600;
+      }
       float: left;
       padding-right: 10px;
       line-height: 0.85;

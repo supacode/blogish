@@ -43,7 +43,7 @@ if (process.env.NODE_ENV === 'development') {
 // Rate Limiter
 const limiter = rateLimit({
   windowMs: 30 * 60 * 1000,
-  max: 100
+  max: process.env.REQUEST_IN_30MIN
 });
 
 app.use(limiter);
