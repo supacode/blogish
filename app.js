@@ -10,6 +10,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 
 const viewRoutes = require('./routes/view');
+const adminRoutes = require('./routes/admin');
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 const commentRoutes = require('./routes/comment');
@@ -56,6 +57,7 @@ app.use(xss());
 
 // Mount app routes
 app.use(viewRoutes);
+app.use('/admin', adminRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/post', postRoutes);
 app.use('/api/v1/comment', commentRoutes);

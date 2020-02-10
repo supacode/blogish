@@ -51,13 +51,33 @@ body {
 .page-body {
   display: flex;
   padding: 2rem 0;
+  justify-content: space-between;
+}
+
+.main {
+  flex: 1.2;
+}
+
+.aside {
+  flex: 0.4;
+  margin-left: 4rem;
+  &__section {
+    margin-bottom: 2rem;
+    &-title {
+      font-size: 150%;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e7e7e7;
+    }
+  }
 }
 
 // Post
-
 .post {
+  &:not(:last-child) {
+    border-bottom: 1px dashed #ccc;
+  }
+
   display: flex;
-  border-bottom: 1px dashed #ccc;
   margin-bottom: 2rem;
   padding-bottom: 2rem;
 
@@ -74,7 +94,7 @@ body {
   }
 
   &__header {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   &__overview {
@@ -97,9 +117,7 @@ body {
   }
 
   &__time {
-    font: {
-      style: italic;
-    }
+    color: #b4b4b4;
   }
 
   &__read-more {
@@ -119,10 +137,11 @@ body {
     margin-bottom: 1rem;
   }
   &__title {
-    font-size: 2rem;
+    font-size: 250%;
   }
 
   &__body {
+    word-break: break-word;
     padding: 2rem 0;
     line-height: 1.5;
     &::first-letter {

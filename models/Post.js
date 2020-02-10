@@ -38,7 +38,7 @@ postSchema.index({ slug: 1 });
 // Create slug
 postSchema.pre('save', function(next) {
   const slug = slugify(this.title, { lower: true }).concat(
-    `-${generateRandomStr(5)}`
+    `-${generateRandomStr(7)}`
   );
 
   this.slug = slug;
