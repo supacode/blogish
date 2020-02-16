@@ -1,23 +1,22 @@
 <%- include('../includes/header.ejs');%>
 
-<form action="#">
-  <div>
-    <label for="">Title</label>
-    <input type="text" />
+<form action="/admin/post" class="admin-form" method="POST">
+  <div class="form-group">
+    <input placeholder="Enter Post title" name="title" type="text" />
   </div>
 
-  <div>
+  <div class="form-group">
     <textarea
-      name=""
+      name="body"
       id=""
       cols="30"
       rows="10"
-      placeholder="Enter your post here"
+      placeholder="What do you want to write about?"
     ></textarea>
   </div>
 
-  <div>
-    <input type="submit" value="Create Post" />
+  <div class="form-group">
+    <input type="submit" class="submit-btn" value="Create Post" />
   </div>
 </form>
 

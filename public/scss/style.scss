@@ -155,3 +155,23 @@ body {
     }
   }
 }
+
+.admin-form {
+  .form-group {
+    margin-bottom: 2rem;
+  }
+
+  input[type='text'],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    border: 1px solid #ccc;
+    font-family: inherit;
+  }
+  .submit-btn {
+    background: $accent;
+    padding: 10px;
+    color: #fff;
+  }
+}

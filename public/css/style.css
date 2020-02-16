@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  border: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   max-width: 100%;
@@ -9,6 +10,10 @@
 
 li {
   list-style: none;
+}
+
+textarea {
+  resize: vertical;
 }
 
 body {
@@ -181,5 +186,24 @@ body {
   float: left;
   padding-right: 10px;
   line-height: 0.85;
+}
+
+.admin-form .form-group {
+  margin-bottom: 2rem;
+}
+
+.admin-form input[type='text'],
+.admin-form textarea {
+  width: 100%;
+  padding: 10px;
+  outline: 0;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+.admin-form .submit-btn {
+  background: #0ca175;
+  padding: 10px;
+  color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

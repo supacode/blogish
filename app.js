@@ -8,6 +8,7 @@ const hpp = require('hpp');
 const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
+const bodyParser = require('body-parser');
 
 const viewRoutes = require('./routes/view');
 const adminRoutes = require('./routes/admin');
@@ -27,6 +28,8 @@ app.set('view engine', 'ejs');
 
 // Set assets/public folder
 app.use(express.static(path.join(`${__dirname}/public`)));
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.json());
 
