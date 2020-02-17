@@ -1,25 +1,37 @@
-.form {
-  margin: 2rem auto 0 auto;
+.authcard {
   max-width: 50%;
-  padding: 2rem;
-  box-shadow: 0 1.5rem 10rem 1rem rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
   background: #fff;
+  padding: 3rem 4rem;
+  box-shadow: 0 1.5rem 10rem 1rem rgba(0, 0, 0, 0.05);
+
+  &__title {
+    font-size: 1.5rem;
+    color: $accent;
+    margin-bottom: 2rem;
+  }
+}
+.form {
   border-radius: 5px;
 
-  > div {
+  > div:not(:last-child) {
     margin-bottom: 2rem;
   }
   &__input {
     background: #f2f2f2;
     width: 100%;
     outline: none;
-    padding: 1.2rem;
+    padding: 1rem;
     font-size: 1.1rem;
     border-radius: 4px;
-    transition: 0.4s ease all;
-    border: 1px solid transparent;
+    transition: all 0.3s;
+    display: block;
+    border: {
+      top: 2px solid transparent;
+      bottom: 2px solid transparent;
+    }
     &:focus {
-      border-color: lighten($color: $accent, $amount: 50);
+      border-bottom-color: $accent;
     }
   }
 

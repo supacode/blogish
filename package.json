@@ -5,11 +5,13 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
   "author": "@supacode",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
@@ -39,6 +41,7 @@
     "eslint-plugin-react": "^7.16.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.2",
+    "parcel-bundler": "^1.12.4",
     "prettier": "^1.18.2"
   }
 }
