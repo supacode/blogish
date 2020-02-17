@@ -22,3 +22,10 @@ exports.getPost = catchAsync(async (req, res, next) => {
     post
   });
 });
+
+exports.getLogin = catchAsync(async (req, res, next) => {
+  res.render('login', {
+    title: 'Login',
+    active: 'login'
+  });
+});
