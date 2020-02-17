@@ -37,10 +37,16 @@ body {
       display: inline-block;
       margin-left: 2rem;
     }
+    .active-page {
+      border-bottom-color: $accent;
+      color: $accent;
+    }
     li a {
       text-decoration: none;
       border-bottom: 2px solid transparent;
       color: inherit;
+      transition: 0.4s ease;
+      padding-bottom: 3px;
       &:hover {
         border-bottom-color: $accent;
       }

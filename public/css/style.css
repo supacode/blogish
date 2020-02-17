@@ -57,10 +57,18 @@ body {
   margin-left: 2rem;
 }
 
+.main-header__nav .active-page {
+  border-bottom-color: #0ca175;
+  color: #0ca175;
+}
+
 .main-header__nav li a {
   text-decoration: none;
   border-bottom: 2px solid transparent;
   color: inherit;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+  padding-bottom: 3px;
 }
 
 .main-header__nav li a:hover {

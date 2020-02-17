@@ -6,7 +6,8 @@ exports.getHome = catchAsync(async (req, res, next) => {
 
   res.status(200).render('index', {
     title: 'Home',
-    posts
+    posts,
+    active: 'home'
   });
 });
 
@@ -17,6 +18,7 @@ exports.getPost = catchAsync(async (req, res, next) => {
 
   res.status(200).render('post', {
     title: post.title,
+    active: 'post',
     post
   });
 });
