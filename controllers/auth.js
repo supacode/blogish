@@ -16,13 +16,29 @@ const signToken = id => {
 const createSendToken = (user, status, res) => {
   const token = signToken(user._id);
 
+  const expires = new Date(
+    Date.now() + process.env.JWT_COOKIE_EXPIRY * 24 * 60 * 60 * 1000
+  );
+
+  const cookieOptions = {
+    expires,
+    httpOnly: true
+  };
+
+  if (process.env.NODE_ENV === 'production') {
+    cookieOptions.secure = true;
+  }
+
   user.password = undefined;
 
-  res.status(status).json({
-    status: 'success',
-    user,
-    token
-  });
+  res
+    .status(status)
+    .cookie('jwt', token, cookieOptions)
+    .json({
+      status: 'success',
+      user,
+      token
+    });
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
