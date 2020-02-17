@@ -5,6 +5,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   max-width: 100%;
+  font-family: inherit;
   font-size: 100%;
 }
 
@@ -34,7 +35,6 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 2rem 0;
-  border-bottom: 1px solid #ccc;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -213,5 +213,60 @@ body {
   background: #0ca175;
   padding: 10px;
   color: #fff;
+}
+
+.form {
+  margin: 2rem auto 0 auto;
+  max-width: 50%;
+  padding: 2rem;
+  -webkit-box-shadow: 0 1.5rem 10rem 1rem rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1.5rem 10rem 1rem rgba(0, 0, 0, 0.05);
+  background: #fff;
+  border-radius: 5px;
+}
+
+.form > div {
+  margin-bottom: 2rem;
+}
+
+.form__input {
+  background: #f2f2f2;
+  width: 100%;
+  outline: none;
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  -webkit-transition: 0.4s ease all;
+  transition: 0.4s ease all;
+  border: 1px solid transparent;
+}
+
+.form__input:focus {
+  border-color: #b3f9e4;
+}
+
+.form__label {
+  line-height: 2;
+  cursor: pointer;
+  color: #929292;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.form__submit {
+  background: #0ca175;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: 2px solid #0ca175;
+  border-radius: 30px;
+  cursor: pointer;
+  -webkit-transition: 0.4s ease background;
+  transition: 0.4s ease background;
+  font-weight: 600;
+}
+
+.form__submit:hover {
+  background: #fff;
+  color: #0ca175;
 }
 /*# sourceMappingURL=style.css.map */

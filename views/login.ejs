@@ -2,15 +2,28 @@
 
 <form action="post" class="form" action="#">
   <div>
-    <input type="email" name="email" id="email" />
+    <label for="email" class="form__label">E-mail</label>
+    <input
+      type="email"
+      placeholder="myemail@example.com"
+      class="form__input"
+      name="email"
+      id="email"
+    />
+  </div>
+  <div>
+    <label for="password" class="form__label">Password</label>
+    <input
+      type="password"
+      placeholder="•••••••"
+      class="form__input"
+      name="password"
+      id="password"
+    />
   </div>
 
   <div>
-    <input type="password" name="password" id="password" />
-  </div>
-
-  <div>
-    <input type="submit" value="Login" />
+    <input type="submit" class="form__submit" value="Login" />
   </div>
 </form>
 

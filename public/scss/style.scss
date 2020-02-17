@@ -1,5 +1,5 @@
-@import '_variables';
-@import '_reset';
+@import 'includes/_variables';
+@import 'includes/_reset';
 
 body {
   font-family: $font-stack;
@@ -15,7 +15,6 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 2rem 0;
-  border-bottom: 1px solid #ccc;
   align-items: center;
 
   &__logo {
@@ -181,3 +180,5 @@ body {
     color: #fff;
   }
 }
+
+@import 'pages/_login';
