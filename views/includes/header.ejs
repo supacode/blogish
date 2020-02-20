@@ -51,6 +51,13 @@
             </li>
             <% } else { %>
             <li>
+              <a
+                href="/admin/post"
+                class="<%-  (active === 'add-post') ? 'active-page' : '' %>"
+                >Create Post</a
+              >
+            </li>
+            <li>
               <a href="#" class="logout__btn">Logout</a>
             </li>
             <% } %>

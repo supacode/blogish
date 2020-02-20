@@ -9821,7 +9821,7 @@ function () {
             data = res.data;
 
             if (data) {
-              location.assign('/');
+              location.assign("/?".concat(new Date().valueOf()));
             }
 
             _context.next = 11;
@@ -9860,13 +9860,16 @@ function () {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return _axios.default.get("".concat(url, "/logout"));
+            return (0, _axios.default)({
+              method: 'GET',
+              url: "".concat(url, "/logout")
+            });
 
           case 3:
             res = _context2.sent;
 
-            if (res) {
-              location.reload('/');
+            if (res.data.status === 'success') {
+              location.assign("/?".concat(new Date().valueOf()));
             }
 
             _context2.next = 10;

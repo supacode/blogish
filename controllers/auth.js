@@ -41,6 +41,14 @@ const createSendToken = (user, status, res) => {
     });
 };
 
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    console.log(roles);
+    console.log(req.user);
+    return next();
+  };
+};
+
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
 
@@ -59,9 +67,8 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-  const user = await User.findById(decoded.id);
+  const user = await User.findById(decoded.id).select('+role');
 
-  console.log(token);
   // If user has changed password since last JWT sign
   if (user.passwordChangedAfter(decoded.iat)) {
     return next(

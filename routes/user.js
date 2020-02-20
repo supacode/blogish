@@ -10,10 +10,11 @@ router.get('/logout', authController.logout);
 router.post('/forgot-password', authController.forgotPassword);
 router.patch('/reset-password/:resetToken', authController.resetPassord);
 
+// Update password for logged in user
 router.patch(
   '/update-password',
   authController.protect,
   authController.updatePassword
-); // Update password for logged in user
+);
 
 module.exports = router;

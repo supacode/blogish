@@ -3,7 +3,8 @@ const catchAsync = require('./../utils/catchAsync');
 
 exports.getAddPost = catchAsync(async (req, res, next) => {
   res.status(200).render('admin/add-post', {
-    title: 'Add Post'
+    title: 'Add Post',
+    active: 'add-post'
   });
 });
 

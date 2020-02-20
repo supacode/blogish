@@ -9,7 +9,7 @@ export const login = async (email, password) => {
 
     const data = res.data;
     if (data) {
-      location.assign('/');
+      location.assign(`/?${new Date().valueOf()}`);
     }
   } catch (err) {
     alert(err.response.data.message);
@@ -18,9 +18,10 @@ export const login = async (email, password) => {
 
 export const logout = async () => {
   try {
-    const res = await axios.get(`${url}/logout`);
-    if (res) {
-      location.reload('/');
+    const res = await axios({ method: 'GET', url: `${url}/logout` });
+
+    if (res.data.status === 'success') {
+      location.assign(`/?${new Date().valueOf()}`);
     }
   } catch (err) {
     console.log(err.response);
