@@ -9804,7 +9804,7 @@ function () {
   var _ref = (0, _asyncToGenerator2.default)(
   /*#__PURE__*/
   _regenerator.default.mark(function _callee(email, password) {
-    var res;
+    var res, data;
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -9818,21 +9818,26 @@ function () {
 
           case 3:
             res = _context.sent;
-            console.log(res.data);
-            _context.next = 10;
+            data = res.data;
+
+            if (data) {
+              location.assign('/');
+            }
+
+            _context.next = 11;
             break;
 
-          case 7:
-            _context.prev = 7;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
-            console.log(_context.t0.response.data);
+            alert(_context.t0.response.data.message);
 
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function login(_x, _x2) {
@@ -10145,7 +10150,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51153" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53243" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

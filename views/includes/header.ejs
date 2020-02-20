@@ -41,6 +41,7 @@
               >
             </li>
 
+            <% if (!locals.user) { %>
             <li>
               <a
                 href="/login"
@@ -48,6 +49,11 @@
                 >Login</a
               >
             </li>
+            <% } else { %>
+            <li>
+              <a href="#" class="logout__btn">Logout</a>
+            </li>
+            <% } %>
           </ul>
         </nav>
       </header>

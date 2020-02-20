@@ -46,8 +46,8 @@
   }
 
   &__submit {
-    background: $accent;
-    color: #fff;
+    background: transparent;
+    color: $accent;
     padding: 1rem 2rem;
     border: 2px solid $accent;
     border-radius: 30px;
@@ -55,8 +55,8 @@
     transition: 0.4s ease background;
     font-weight: 600;
     &:hover {
-      background: #fff;
-      color: $accent;
+      background: $accent;
+      color: #fff;
     }
   }
 }

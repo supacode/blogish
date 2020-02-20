@@ -7,8 +7,11 @@ export const login = async (email, password) => {
   try {
     const res = await axios.post(`${url}/users/login`, { email, password });
 
-    console.log(res.data);
+    const data = res.data;
+    if (data) {
+      location.assign('/');
+    }
   } catch (err) {
-    console.log(err.response.data);
+    alert(err.response.data.message);
   }
 };
