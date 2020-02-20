@@ -1,8 +1,12 @@
 const express = require('express');
 
+const authController = require('./../controllers/auth');
+
 const viewsController = require('./../controllers/views');
 
 const router = express.Router();
+
+router.use(authController.isLoggedin);
 
 router.route('/login').get(viewsController.getLogin);
 

@@ -9,6 +9,7 @@ const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const viewRoutes = require('./routes/view');
 const adminRoutes = require('./routes/admin');
@@ -57,6 +58,14 @@ app.use(mongoSanitize());
 
 // XSS Attacls
 app.use(xss());
+
+// Parse cookies
+app.use(cookieParser());
+
+// Test Middleware
+app.use((req, res, next) => {
+  next();
+});
 
 // Mount app routes
 app.use(viewRoutes);
