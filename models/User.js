@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     enum: ['admin', 'mod', 'user'],
-    default: 'user'
+    default: 'user',
+    select: false
   },
   password: {
     type: String,
@@ -32,9 +33,12 @@ const userSchema = new mongoose.Schema({
       message: 'Passwords do not match'
     }
   },
+  passwordChangedAt: {
+    type: Date,
+    select: false
+  },
   passwordTokenExpiry: Date,
-  passwordResetToken: String,
-  passwordChangedAt: Date
+  passwordResetToken: String
 });
 
 userSchema.methods.comparePassword = async function(

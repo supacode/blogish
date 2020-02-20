@@ -1,13 +1,14 @@
 import axios from 'axios';
 
 const PORT = 3000;
-const url = `http://127.0.0.1:${PORT}/api/v1`;
+const url = `http://localhost:${PORT}/api/v1`;
 
 export const login = async (email, password) => {
   try {
-    const res = await axios.post(`${url}/user/login`, { email, password });
-    return res;
+    const res = await axios.post(`${url}/users/login`, { email, password });
+
+    console.log(res.data);
   } catch (err) {
-    console.log(err.response);
+    console.log(err.response.data);
   }
 };
