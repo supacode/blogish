@@ -77,6 +77,18 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
+exports.logout = (req, res, next) => {
+  res
+    .cookie('jwt', '', {
+      expires: new Date(new Date() + 0 * 1000)
+    })
+    .status(200)
+    .json({
+      status: 'success',
+      message: 'Logged out'
+    });
+};
+
 exports.isLoggedin = async (req, res, next) => {
   if (req.cookies.jwt) {
     const decoded = jwt.verify(req.cookies.jwt, process.env.JWT_SECRET_KEY);

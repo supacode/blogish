@@ -8,10 +8,10 @@ const router = express.Router();
 
 router.use(authController.isLoggedin);
 
-router.route('/login').get(viewsController.getLogin);
-
-router.route('/').get(viewsController.getHome);
+router.get('/login', viewsController.getLogin);
 
 router.route('/post/:slug').get(viewsController.getPost);
+
+router.route('/').get(viewsController.getHome);
 
 module.exports = router;
