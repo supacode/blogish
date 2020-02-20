@@ -43,9 +43,12 @@ const createSendToken = (user, status, res) => {
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
-    console.log(roles);
-    console.log(req.user);
-    return next();
+    if (roles.includes(req.user.role)) {
+      return next();
+    }
+    return next(
+      new AppError('You are not authorized to perform this action.', 403)
+    );
   };
 };
 

@@ -1,5 +1,6 @@
 @import 'includes/_variables';
 @import 'includes/_reset';
+@import 'includes/mixins';
 
 body {
   font-family: $font-stack;
@@ -161,24 +162,7 @@ body {
   }
 }
 
-.admin-form {
-  .form-group {
-    margin-bottom: 2rem;
-  }
-
-  input[type='text'],
-  textarea {
-    width: 100%;
-    padding: 10px;
-    outline: 0;
-    border: 1px solid #ccc;
-    font-family: inherit;
-  }
-  .submit-btn {
-    background: $accent;
-    padding: 10px;
-    color: #fff;
-  }
+@import 'pages/primary-form';
+.add-post {
+  max-width: 100%;
 }
-
-@import 'pages/_login';

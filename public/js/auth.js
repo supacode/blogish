@@ -7,8 +7,7 @@ export const login = async (email, password) => {
   try {
     const res = await axios.post(`${url}/login`, { email, password });
 
-    const data = res.data;
-    if (data) {
+    if (res.data.status) {
       location.assign(`/?${new Date().valueOf()}`);
     }
   } catch (err) {

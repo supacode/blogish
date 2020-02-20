@@ -1,31 +1,31 @@
 <%- include('includes/header.ejs');%>
 
-<div class="authcard">
-  <h2 class="authcard__title">Login into your account</h2>
-  <form action="post" id="login-form" class="form" method="POST" action="#">
+<div class="p-form-wrap">
+  <h2 class="p-form-wrap__title">Login into your account</h2>
+  <form action="post" id="login-form" class="p-form" method="POST" action="#">
     <div>
-      <label for="email" class="form__label">E-mail</label>
+      <label for="email" class="p-form__label">E-mail</label>
       <input
         type="email"
         placeholder="myemail@example.com"
-        class="form__input"
+        class="p-form__input"
         name="email"
         id="email"
       />
     </div>
     <div>
-      <label for="password" class="form__label">Password</label>
+      <label for="password" class="p-form__label">Password</label>
       <input
         type="password"
         placeholder="•••••••"
-        class="form__input"
+        class="p-form__input"
         name="password"
         id="password"
       />
     </div>
 
     <div>
-      <input type="submit" class="form__submit" value="Login" />
+      <input type="submit" class="p-form__submit" value="Login" />
     </div>
   </form>
 </div>

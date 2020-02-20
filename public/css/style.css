@@ -197,49 +197,30 @@ body {
   line-height: 0.85;
 }
 
-.admin-form .form-group {
-  margin-bottom: 2rem;
-}
-
-.admin-form input[type='text'],
-.admin-form textarea {
-  width: 100%;
-  padding: 10px;
-  outline: 0;
-  border: 1px solid #ccc;
-  font-family: inherit;
-}
-
-.admin-form .submit-btn {
-  background: #0ca175;
-  padding: 10px;
-  color: #fff;
-}
-
-.authcard {
+.p-form-wrap {
   max-width: 50%;
   margin: 0 auto;
   background: #fff;
-  padding: 3rem 4rem;
+  padding: 2rem 3rem;
   -webkit-box-shadow: 0 1.5rem 10rem 1rem rgba(0, 0, 0, 0.05);
           box-shadow: 0 1.5rem 10rem 1rem rgba(0, 0, 0, 0.05);
 }
 
-.authcard__title {
+.p-form-wrap__title {
   font-size: 1.5rem;
   color: #0ca175;
   margin-bottom: 2rem;
 }
 
-.form {
+.p-form {
   border-radius: 5px;
 }
 
-.form > div:not(:last-child) {
-  margin-bottom: 2rem;
+.p-form > div:not(:last-child) {
+  margin-bottom: 1.5rem;
 }
 
-.form__input {
+.p-form__input {
   background: #f2f2f2;
   width: 100%;
   outline: none;
@@ -253,11 +234,11 @@ body {
   border-bottom: 2px solid transparent;
 }
 
-.form__input:focus {
+.p-form__input:focus {
   border-bottom-color: #0ca175;
 }
 
-.form__label {
+.p-form__label {
   line-height: 2;
   cursor: pointer;
   color: #929292;
@@ -265,7 +246,7 @@ body {
   font-size: 1.05rem;
 }
 
-.form__submit {
+.p-form__submit {
   background: transparent;
   color: #0ca175;
   padding: 1rem 2rem;
@@ -277,8 +258,12 @@ body {
   font-weight: 600;
 }
 
-.form__submit:hover {
+.p-form__submit:hover {
   background: #0ca175;
   color: #fff;
+}
+
+.add-post {
+  max-width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

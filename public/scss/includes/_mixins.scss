@@ -1,21 +1,23 @@
-.authcard {
-  max-width: 50%;
-  margin: 0 auto;
-  background: #fff;
-  padding: 3rem 4rem;
-  box-shadow: 0 1.5rem 10rem 1rem rgba(0, 0, 0, 0.05);
-
-  &__title {
-    font-size: 1.5rem;
-    color: $accent;
-    margin-bottom: 2rem;
+@mixin primary-btn {
+  background: transparent;
+  color: $accent;
+  padding: 1rem 2rem;
+  border: 2px solid $accent;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.4s ease background;
+  font-weight: 600;
+  &:hover {
+    background: $accent;
+    color: #fff;
   }
 }
-.form {
+
+@mixin primary-form {
   border-radius: 5px;
 
   > div:not(:last-child) {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   &__input {
     background: #f2f2f2;
@@ -46,17 +48,6 @@
   }
 
   &__submit {
-    background: transparent;
-    color: $accent;
-    padding: 1rem 2rem;
-    border: 2px solid $accent;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.4s ease background;
-    font-weight: 600;
-    &:hover {
-      background: $accent;
-      color: #fff;
-    }
+    @include primary-btn();
   }
 }
