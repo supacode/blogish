@@ -80,7 +80,8 @@ exports.protect = catchAsync(async (req, res, next) => {
 exports.logout = (req, res, next) => {
   res
     .cookie('jwt', '', {
-      expires: new Date(new Date() + 0 * 1000)
+      expires: new Date(new Date() + 0 * 1000),
+      httpOnly: true
     })
     .status(200)
     .json({
