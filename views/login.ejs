@@ -11,17 +11,23 @@
         class="p-form__input"
         name="email"
         id="email"
+        required
       />
     </div>
     <div>
       <label for="password" class="p-form__label">Password</label>
-      <input
-        type="password"
-        placeholder="•••••••"
-        class="p-form__input"
-        name="password"
-        id="password"
-      />
+      <div class="p-form__group">
+        <input
+          type="password"
+          placeholder="•••••••"
+          class="p-form__input"
+          name="password"
+          id="password"
+          required
+          data-status="shown"
+        />
+        <i class="fa fa-eye toggle-password" title="Show Password"></i>
+      </div>
     </div>
 
     <div class="p-form__submit--wrapper">

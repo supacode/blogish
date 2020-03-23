@@ -25,6 +25,19 @@
 
 .p-form {
   @include primary-form();
+
+  &__group {
+    position: relative;
+    i {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 25%;
+      right: 2%;
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
 }
 
 // Keyframes

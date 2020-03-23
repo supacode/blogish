@@ -275,6 +275,20 @@ body {
   color: #fff;
 }
 
+.p-form__group {
+  position: relative;
+}
+
+.p-form__group i {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 25%;
+  right: 2%;
+  padding: 5px;
+  cursor: pointer;
+}
+
 @-webkit-keyframes shake {
   0% {
     -webkit-transform: translateX(-5px);

@@ -2,14 +2,20 @@
 import '@babel/polyfill';
 
 import { login, logout } from './auth';
+import { togglePassword } from './authUI';
 
 // Select DOM Elements
 export const elements = {
   loginForm: document.querySelector('#login-form'),
-  logoutBtn: document.querySelector('.logout__btn')
+  logoutBtn: document.querySelector('.logout__btn'),
+  togglePassword: document.querySelector('.toggle-password')
 };
 
 // Dispatch Actions
+
+// Toggle Password
+togglePassword();
+
 if (elements.loginForm) {
   elements.loginForm.addEventListener('submit', e => {
     e.preventDefault();
