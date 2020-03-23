@@ -9779,7 +9779,98 @@ module.exports.default = axios;
 
 },{"./utils":"../../node_modules/axios/lib/utils.js","./helpers/bind":"../../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../../node_modules/axios/lib/helpers/spread.js"}],"../../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../../node_modules/axios/lib/axios.js"}],"auth.js":[function(require,module,exports) {
+},{"./lib/axios":"../../node_modules/axios/lib/axios.js"}],"../../node_modules/@babel/runtime-corejs2/helpers/classCallCheck.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+},{}],"../../node_modules/core-js/library/modules/es6.object.define-property.js":[function(require,module,exports) {
+var $export = require('./_export');
+// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
+$export($export.S + $export.F * !require('./_descriptors'), 'Object', { defineProperty: require('./_object-dp').f });
+
+},{"./_export":"../../node_modules/core-js/library/modules/_export.js","./_descriptors":"../../node_modules/core-js/library/modules/_descriptors.js","./_object-dp":"../../node_modules/core-js/library/modules/_object-dp.js"}],"../../node_modules/core-js/library/fn/object/define-property.js":[function(require,module,exports) {
+require('../../modules/es6.object.define-property');
+var $Object = require('../../modules/_core').Object;
+module.exports = function defineProperty(it, key, desc) {
+  return $Object.defineProperty(it, key, desc);
+};
+
+},{"../../modules/es6.object.define-property":"../../node_modules/core-js/library/modules/es6.object.define-property.js","../../modules/_core":"../../node_modules/core-js/library/modules/_core.js"}],"../../node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":[function(require,module,exports) {
+module.exports = require("core-js/library/fn/object/define-property");
+},{"core-js/library/fn/object/define-property":"../../node_modules/core-js/library/fn/object/define-property.js"}],"../../node_modules/@babel/runtime-corejs2/helpers/createClass.js":[function(require,module,exports) {
+var _Object$defineProperty = require("../core-js/object/define-property");
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+
+    _Object$defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+},{"../core-js/object/define-property":"../../node_modules/@babel/runtime-corejs2/core-js/object/define-property.js"}],"alert.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Alert = void 0;
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpers/createClass"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint-disable */
+var Alert =
+/*#__PURE__*/
+function () {
+  function Alert() {
+    var alert = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+      type: type,
+      msg: msg
+    };
+    (0, _classCallCheck2.default)(this, Alert);
+    this.type = alert.type;
+    this.msg = alert.msg;
+    this.submitBtn = document.querySelector('.p-form__submit--wrapper');
+    this.append();
+  }
+
+  (0, _createClass2.default)(Alert, [{
+    key: "append",
+    value: function append() {
+      this.removeAlert();
+      var html = "<div class=\"alert alert__".concat(this.type, "\"> <p>").concat(this.msg, "</p> </div>");
+      this.submitBtn.insertAdjacentHTML('beforebegin', html);
+    }
+  }, {
+    key: "removeAlert",
+    value: function removeAlert() {
+      var alert = document.querySelector('.alert');
+      if (alert) alert.parentElement.removeChild(alert);
+    }
+  }]);
+  return Alert;
+}();
+
+exports.Alert = Alert;
+},{"@babel/runtime-corejs2/helpers/classCallCheck":"../../node_modules/@babel/runtime-corejs2/helpers/classCallCheck.js","@babel/runtime-corejs2/helpers/createClass":"../../node_modules/@babel/runtime-corejs2/helpers/createClass.js"}],"auth.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9793,6 +9884,8 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime-corejs2/
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _alert = require("./alert");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PORT = 3000;
@@ -9804,7 +9897,7 @@ function () {
   var _ref = (0, _asyncToGenerator2.default)(
   /*#__PURE__*/
   _regenerator.default.mark(function _callee(email, password) {
-    var res;
+    var res, alert;
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -9829,7 +9922,10 @@ function () {
           case 7:
             _context.prev = 7;
             _context.t0 = _context["catch"](0);
-            alert(_context.t0.response.data.message);
+            alert = new _alert.Alert({
+              type: 'error',
+              msg: _context.t0.response.data.message
+            });
 
           case 10:
           case "end":
@@ -9893,7 +9989,7 @@ function () {
 }();
 
 exports.logout = logout;
-},{"@babel/runtime-corejs2/regenerator":"../../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","axios":"../../node_modules/axios/index.js"}],"index.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/regenerator":"../../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("core-js/modules/es6.array.copy-within");
@@ -10205,7 +10301,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53243" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36807" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

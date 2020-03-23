@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Alert } from './alert';
 
 const PORT = 3000;
 const url = `http://localhost:${PORT}/api/v1/users`;
@@ -11,7 +12,7 @@ export const login = async (email, password) => {
       location.assign(`/?${new Date().valueOf()}`);
     }
   } catch (err) {
-    alert(err.response.data.message);
+    const alert = new Alert({ type: 'error', msg: err.response.data.message });
   }
 };
 

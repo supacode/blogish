@@ -11,6 +11,35 @@
     margin-bottom: 2rem;
   }
 }
+
+.alert {
+  &__error {
+    color: #bd3118;
+    animation: shake 0.2s;
+  }
+
+  &__success {
+    color: #168d65;
+  }
+}
+
 .p-form {
   @include primary-form();
+}
+
+// Keyframes
+
+@keyframes shake {
+  0% {
+    transform: translateX(-5px);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

@@ -1,13 +1,15 @@
-* {
+*,
+*:before,
+*:after {
   padding: 0;
   margin: 0;
   border: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   max-width: 100%;
-  font-family: inherit;
-  outline: none;
+  outline: 0;
   font-size: 100%;
+  font-family: inherit;
 }
 
 li {
@@ -212,6 +214,16 @@ body {
   margin-bottom: 2rem;
 }
 
+.alert__error {
+  color: #bd3118;
+  -webkit-animation: shake 0.2s;
+          animation: shake 0.2s;
+}
+
+.alert__success {
+  color: #168d65;
+}
+
 .p-form {
   border-radius: 5px;
 }
@@ -261,6 +273,44 @@ body {
 .p-form__submit:hover {
   background: #0ca175;
   color: #fff;
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  25% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  75% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  25% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  75% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
 }
 
 .add-post {
