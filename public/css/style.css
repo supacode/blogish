@@ -201,7 +201,9 @@ body {
 
 .p-form-wrap {
   max-width: 50%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -2rem;
   background: #fff;
   padding: 2rem 3rem;
   -webkit-box-shadow: 0 1.5rem 10rem 1rem rgba(0, 0, 0, 0.05);
@@ -286,7 +288,12 @@ body {
   top: 25%;
   right: 2%;
   padding: 5px;
+  font-size: 110%;
   cursor: pointer;
+}
+
+.password__toggle--active {
+  color: #0ca175;
 }
 
 @-webkit-keyframes shake {

@@ -10006,6 +10006,7 @@ var showPassword = function showPassword(el) {
   var passwordInput = _index.elements.loginForm.password;
   passwordInput.setAttribute('type', 'password');
   passwordInput.setAttribute('data-status', 'shown');
+  el.classList.toggle('password__toggle--active');
 };
 
 var hidePassword = function hidePassword(el) {
@@ -10015,6 +10016,7 @@ var hidePassword = function hidePassword(el) {
   var passwordInput = _index.elements.loginForm.password;
   passwordInput.setAttribute('type', 'text');
   passwordInput.setAttribute('data-status', 'hidden');
+  el.classList.toggle('password__toggle--active');
 };
 
 var togglePassword = function togglePassword() {

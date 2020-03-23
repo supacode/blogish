@@ -7,6 +7,7 @@ const showPassword = el => {
   const { password: passwordInput } = elements.loginForm;
   passwordInput.setAttribute('type', 'password');
   passwordInput.setAttribute('data-status', 'shown');
+  el.classList.toggle('password__toggle--active');
 };
 
 const hidePassword = el => {
@@ -16,6 +17,7 @@ const hidePassword = el => {
   const { password: passwordInput } = elements.loginForm;
   passwordInput.setAttribute('type', 'text');
   passwordInput.setAttribute('data-status', 'hidden');
+  el.classList.toggle('password__toggle--active');
 };
 
 export const togglePassword = () => {
