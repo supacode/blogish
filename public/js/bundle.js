@@ -9992,6 +9992,11 @@ exports.logout = logout;
 },{"@babel/runtime-corejs2/regenerator":"../../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.elements = void 0;
+
 require("core-js/modules/es6.array.copy-within");
 
 require("core-js/modules/es6.array.fill");
@@ -10255,20 +10260,25 @@ require("regenerator-runtime/runtime");
 var _auth = require("./auth");
 
 // Select DOM Elements
-var loginForm = document.querySelector('#login-form');
-var logoutBtn = document.querySelector('.logout__btn'); // Dispatch Actions
+var elements = {
+  loginForm: document.querySelector('#login-form'),
+  logoutBtn: document.querySelector('.logout__btn')
+}; // Dispatch Actions
 
-if (loginForm) {
-  loginForm.addEventListener('submit', function (e) {
+exports.elements = elements;
+
+if (elements.loginForm) {
+  elements.loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var email = loginForm.email,
-        password = loginForm.password;
+    var _elements$loginForm = elements.loginForm,
+        email = _elements$loginForm.email,
+        password = _elements$loginForm.password;
     (0, _auth.login)(email.value, password.value);
   });
 }
 
-if (logoutBtn) {
-  logoutBtn.addEventListener('click', function (e) {
+if (elements.logoutBtn) {
+  elements.logoutBtn.addEventListener('click', function (e) {
     e.preventDefault();
     (0, _auth.logout)();
   });
