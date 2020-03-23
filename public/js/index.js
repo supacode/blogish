@@ -13,8 +13,7 @@ export const elements = {
 
 // Dispatch Actions
 
-// Toggle Password
-if (elements.togglePassword) togglePassword();
+if (elements.togglePassword) togglePassword(); // Toggle Password
 
 if (elements.loginForm) {
   elements.loginForm.addEventListener('submit', e => {

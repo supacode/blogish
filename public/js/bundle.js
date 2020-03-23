@@ -10310,10 +10310,9 @@ var elements = {
   logoutBtn: document.querySelector('.logout__btn'),
   togglePassword: document.querySelector('.toggle-password')
 }; // Dispatch Actions
-// Toggle Password
 
 exports.elements = elements;
-if (elements.togglePassword) (0, _authUI.togglePassword)();
+if (elements.togglePassword) (0, _authUI.togglePassword)(); // Toggle Password
 
 if (elements.loginForm) {
   elements.loginForm.addEventListener('submit', function (e) {
