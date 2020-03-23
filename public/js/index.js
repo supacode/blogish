@@ -14,7 +14,7 @@ export const elements = {
 // Dispatch Actions
 
 // Toggle Password
-togglePassword();
+if (elements.togglePassword) togglePassword();
 
 if (elements.loginForm) {
   elements.loginForm.addEventListener('submit', e => {

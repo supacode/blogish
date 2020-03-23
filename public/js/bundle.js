@@ -10311,7 +10311,7 @@ var elements = {
 // Toggle Password
 
 exports.elements = elements;
-(0, _authUI.togglePassword)();
+if (elements.togglePassword) (0, _authUI.togglePassword)();
 
 if (elements.loginForm) {
   elements.loginForm.addEventListener('submit', function (e) {
