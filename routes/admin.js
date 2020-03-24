@@ -11,6 +11,6 @@ router.use(authController.protect, authController.restrictTo('admin'));
 router
   .route('/post')
   .get(adminController.getAddPost)
-  .post(adminController.postPost);
+  .post(adminController.uploadPhoto, adminController.postPost);
 
 module.exports = router;
