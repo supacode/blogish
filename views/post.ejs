@@ -8,7 +8,11 @@
       'long', year: 'numeric', day: 'numeric'}) %></time
     >
   </header>
-  <img src="/img/posts/post-test.jpg" alt="<%= post.title %>" />
+  <img
+    src="/img/posts/<%= post.coverImage %>"
+    class="post-item__img"
+    alt="<%= post.title %>"
+  />
   <p class="post-item__body"><%= post.body %></p>
 </article>
 

@@ -10,7 +10,7 @@ const diskStorage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const ext = file.mimetype.split('/')[1];
-    cb(null, `post-${Date.now()}-${generateRandomStr(5)}.${ext}`);
+    cb(null, `${Date.now()}_${generateRandomStr(7)}.${ext}`);
   }
 });
 
@@ -40,7 +40,7 @@ exports.postPost = catchAsync(async (req, res, next) => {
   };
 
   if (req.file) {
-    Object.assign(postObj, { coverImage: req.file.filename });
+    postObj.coverImage = req.file.filename;
   }
 
   const post = await Post.create(postObj);

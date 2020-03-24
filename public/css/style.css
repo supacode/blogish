@@ -185,6 +185,10 @@ body {
   font-size: 250%;
 }
 
+.post-item__img {
+  max-height: 500px;
+}
+
 .post-item__body {
   word-break: break-word;
   padding: 2rem 0;
@@ -194,8 +198,10 @@ body {
 .post-item__body::first-letter {
   font-size: 300%;
   font-weight: 600;
+  display: none;
+  margin-top: -5px;
   float: left;
-  padding-right: 10px;
+  padding-right: 5px;
   line-height: 0.85;
 }
 
