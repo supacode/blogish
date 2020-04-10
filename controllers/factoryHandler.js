@@ -66,7 +66,7 @@ exports.getAll = Model =>
     res.status(200).json({
       status: 'sucess',
       data: {
-        docs
+        data: docs
       }
     });
   });
