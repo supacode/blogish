@@ -9,3 +9,5 @@ exports.getPost = factory.getOne(Post);
 exports.updatePost = factory.updateOne(Post);
 
 exports.deletePost = factory.deleteOne(Post);
+
+exports.getAll = factory.getAll(Post);

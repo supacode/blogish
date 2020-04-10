@@ -58,3 +58,15 @@ exports.deleteOne = Model =>
       status: 'success'
     });
   });
+
+exports.getAll = Model =>
+  catchAsync(async (req, res, next) => {
+    const docs = await Model.find();
+
+    res.status(200).json({
+      status: 'sucess',
+      data: {
+        docs
+      }
+    });
+  });

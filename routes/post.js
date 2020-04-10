@@ -6,7 +6,10 @@ const commentRouter = require('./comment');
 
 const router = express.Router();
 
-router.route('/').post(postController.createPost);
+router
+  .route('/')
+  .post(postController.createPost)
+  .get(postController.getAll);
 
 router.use('/:post/comment', commentRouter);
 
