@@ -63,7 +63,7 @@ exports.getAll = Model =>
     const docs = await Model.find();
 
     res.status(200).json({
-      status: 'sucess',
+      status: 'success',
       data: {
         data: docs
       }
