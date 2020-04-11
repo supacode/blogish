@@ -10,6 +10,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 const viewRoutes = require('./routes/view');
 const adminRoutes = require('./routes/admin');
@@ -36,6 +37,9 @@ app.use(express.json());
 
 // Prevent parameter pollution
 app.use(hpp());
+
+// CORS
+app.use(cors());
 
 // Helmet
 app.use(helmet());
